@@ -1,0 +1,11 @@
+Iam using a open-rc based gnome desktop-evironment
+emerge -a sys-power/acpid # required for power saving capability and hardware switch configurations
+nano -w /etc/acpi/default.sh
+edit code looking like this:
+                  lid)
+				                if [ `cat /proc/acpi/button/lid/LID0/state | awk '{print $2}'` = "closed" ] 
+                                       then 
+                                                loginctl suspend # loginctl is used in open-rc ,replace it with systemctl suspend for systemd
+				                fi 
+				                ;;
+
