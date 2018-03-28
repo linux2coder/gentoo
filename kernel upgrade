@@ -1,0 +1,12 @@
+cd /usr/src/linux
+cp .config ~/kernel-config_backup
+ [option 1]
+ cd ..
+ rm linux
+ eselect kernel list 
+ eselect kernel set x # here x is the number alloated for your desired kernel
+ ln -s linux-[selected version]/ linux
+ [option 2]
+ eselect kernel list 
+ eselect kernel sex x # x is number alloated to your desired kernel
+ls -l linux # check the symbollic link 
