@@ -10,3 +10,12 @@ cp .config ~/kernel-config_backup
  eselect kernel list 
  eselect kernel sex x # x is number alloated to your desired kernel
 ls -l linux # check the symbollic link 
+cd /usr/src/linux
+cp ../linux-[oldkernel]-gentoo/.config .
+make olddefconfig
+make -j3
+make modules_install
+make install
+cp /arch/x86_64/boot/bzImage /boot/vmlinux-[latest-version]-gentoo
+grub-mkconfig -o /boot/grub/grub.cfg
+grub-update
